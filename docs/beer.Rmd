@@ -1,5 +1,5 @@
 ---
-title: "La production mensuelle de bière"
+title: "Production mensuelle de bière en Australie"
 author: "___"
 date: "___"
 output: html_document
@@ -11,70 +11,51 @@ SciViews::R
 library(pastecs)
 ```
 
-# Ojectifs
 
-Ce document s'intéresse à la production de bière en Australie.
+## Objectif
 
-# Contexte
+Explorer une série temporelle relative à la production de bière en Australie. La production mensuelle de bière en mégalitres est enregistrée mensuellement depuis 1956. D'après vous, qulles sont les grandes caractéristiques de cette séries chronologique/ ?
 
-La production mensuelle de bière en mégalitres est encodée mensuellement depuis 1956.
 
-# Analyse
+## Analyse
 
-<!--- consignes
-Importez le jeu de données beer.csv
-Transformez la variable votre objet beer en objet ts
---->
+<!--% Importez le jeu de données `beer.csv` du dossier `data`. Transformez-le en objet `ts` qui encode le temps correctement. -->
 
 ```{r import}
-beer <- read()
-beer_ts <- ___(___)
+
 ```
 
-<!--- consignes
-Etudiez la série spatio-temporelle. Intéressez vous aux début, à la fin et à la fréquence de cette série. Renseignez vos observations en maximum 3 phrases.
---->
+<!--% Écrivez le code qui renvoie le début, la fin et la fréquence de cette série. Commentez vos observations en une phrase. -->
 
 ```{r ts}
 
 ```
 
-<!--- consignes
-Etudiez la série spatio-temporelle. Intéressez vous à l'autocorrélation de cette série. Renseignez vos observations en maximum 2 phrases.
---->
+<!--% Représentez graphiquement l'autocorrélation de cette série. Décrivez ensuite ce que vous observez en maximum deux phrases. -->
 
 ```{r acf}
 
 ```
 
-<!--- consignes
-Etudiez la série spatio-temporelle. Réalisez une aggrégation/des statistiques glissantes. Réalisez un graphique de ce résumé des données. Renseignez vos observations en maximum 2 phrases.
---->
+<!--% Calculez des statistiques glissantes pertinentes pour cette série. Réalisez-en aussi un graphique, ainsi qu'un paragraphe qui décrit ce que vous observes en maximum deux phrases. -->
 
 ```{r statslide}
-beer_sl <- ___(___)
-plot(beer_sl)
+
 ```
 
-<!--- consignes
-Etudiez la série spatio-temporelle. Intéressez vous à la tendance générale de votre série. Renseignez vos observations en maximum 2 phrases.
---->
+<!--% Étudiez la tendance générale de votre série via bootstrap (y compris le graphique). Commentez-là en maximum deux phrases. -->
 
 ```{r trendtest}
-beer_trend <- ___(___)
-plot(___)
+
 ```
 
-<!--- consignes
-Etudiez la série spatio-temporelle. Intéressez vous à l'analyse spectrale de votre série. Renseignez vos observations en maximum 2 phrases.
---->
+<!--% Effectuez une analyse spectrale de votre série (spectrogramme lissé). Indiquez ce que vous observez en maximum deux phrases. -->
 
 ```{r spectrum}
-spectrum(___, spans = c(___, ___))
+
 ```
 
-# Conclusion
 
-<!--- consignes
-Etudiez la série spatio-temporelle. Concluez votre analyse en maximum 3 phrases.
---->
+## Conclusions
+
+<!--% Ajoutez ici un paragraphe qui reprend les caractéristiques importantes de cette série spatio-temporelle. -->

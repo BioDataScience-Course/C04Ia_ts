@@ -1,9 +1,13 @@
+
 # History files
 .Rhistory
 .Rapp.history
 
 # Session Data files
 .RData
+
+# User-specific files
+.Ruserdata
 
 # Example code in package build process
 *-Ex.R
@@ -25,15 +29,23 @@ vignettes/*.pdf
 .httr-oauth
 
 # knitr and R markdown default cache directories
-/*_cache/
+*_cache/
 /cache/
 
-# Temporary files created by R markdown
+# Temporary files created by R Markdown
 *.utf8.md
 *.knit.md
 
-# Shiny token, see https://shiny.rstudio.com/articles/shinyapps.html
-rsconnect/
+# R Environment Variables
+.Renviron
 
-# html files
-*.html
+# README
+README.html
+
+# html and pdf in docs
+docs/*.html
+docs/*.pdf
+docs/*.nb.html
+
+# OS-specific files
+.DS_Store

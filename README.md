@@ -1,30 +1,20 @@
-# Exercice cadré sur les séries spatio-temporelles : Comparaison de deux séries temporelles
+# Comparaison de deux séries temporelles
 
 ## Avant-propos
 
-Cette séance d'exercices est en cours de développement. N'hésitez pas à vérifier le lien suivant afin de voir les éventuelles modifications dans les consignes : <https://github.com/BioDataScience-Course/C04Ga_ts>
-
-Ce projet **individuel** est un projet **court** et **cadré**. Ce dernier doit être **terminé pour la fin de ce module**.
-
-Ce projets va être corrigé par une série de tests automatiques simples. La réussite de ces tests ne t'assure pas d'avoir compris en profondeur la matière. Il est donc de ta **responsabilité** d'étudiant de t'assurer d'avoir bien compris chaque exercice. Des projets de groupe et des challenges te seront bientôt proposé. Sans une bonne
-
-## Objectif
-
-Complétez les deux fichiers suivants : 
-
-- complétez le fichier `schizo.Rmd` du dossier `docs`
-- compléter le fichier `beer.Rmd` du dossier `docs`
+Ce projet est susceptible d'évoluer. N'hésitez pas à vérifier le lien suivant afin de voir les éventuelles modifications dans les consignes : <https://github.com/BioDataScience-Course/C04Ia_ts>
 
 Ce projet **individuel** est un projet **court** et **cadré**.
 
-## Contexte
 
-### La Schizophrénie
+## Objectif
 
-Un test d'activité cérébrale est réalisé sur un patient quotidiennement durant 120 jours. Au jour 60, les médécins lui prescrivent le médicament. 
+Apprenez à décrire des séries spatio-temporelles en complétant les deux fichiers `schizo.Rmd` et `beer.Rmd` du dossier `docs`. Lorsque vous aurez terminé de compléter un fichier, compilez le document final HTML (bouton **Knit**) et assurez-vous que cette compilation se fait sans erreur, sinon, apportez les corrections nécessaires. Proposer des fichiers `.Rmd` qui compilent correctement fait partie de l'exercice.
 
-Le nouveau médicament a t'il un effet sur l'activité cérébrale du patient étudié ? 
+### Suivi d'un patient schizophrénique
 
-### La production de bières
+Un test d'activité cérébrale est réalisé quotidiennement sur un patient schizophrénique durant 120 jours. Au jour 60, les médecins lui administrent un médicament qui est censé diminuer cette activité. Le médicament montre-t-il l'effet escompté ? 
 
-La production mensuelle de bière (mégalitres) est encodée mensuellement depuis 1956. 
+### Production mensuelle de bière en Australie
+
+La production mensuelle de bière en mégalitres est consignée mensuellement entre 1956 et 1995. Comment varie cette production au cours du temps ? 
