@@ -1,0 +1,80 @@
+---
+title: "La production mensuelle de bière"
+author: "___"
+date: "___"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+SciViews::R
+library(pastecs)
+```
+
+# Ojectifs
+
+Ce document s'intéresse à la production de bière en Australie.
+
+# Contexte
+
+La production mensuelle de bière en mégalitres est encodée mensuellement depuis 1956.
+
+# Analyse
+
+<!--- consignes
+Importez le jeu de données beer.csv
+Transformez la variable votre objet beer en objet ts
+--->
+
+```{r import}
+beer <- read()
+beer_ts <- ___(___)
+```
+
+<!--- consignes
+Etudiez la série spatio-temporelle. Intéressez vous aux début, à la fin et à la fréquence de cette série. Renseignez vos observations en maximum 3 phrases.
+--->
+
+```{r ts}
+
+```
+
+<!--- consignes
+Etudiez la série spatio-temporelle. Intéressez vous à l'autocorrélation de cette série. Renseignez vos observations en maximum 2 phrases.
+--->
+
+```{r acf}
+
+```
+
+<!--- consignes
+Etudiez la série spatio-temporelle. Réalisez une aggrégation/des statistiques glissantes. Réalisez un graphique de ce résumé des données. Renseignez vos observations en maximum 2 phrases.
+--->
+
+```{r statslide}
+beer_sl <- ___(___)
+plot(beer_sl)
+```
+
+<!--- consignes
+Etudiez la série spatio-temporelle. Intéressez vous à la tendance générale de votre série. Renseignez vos observations en maximum 2 phrases.
+--->
+
+```{r trendtest}
+beer_trend <- ___(___)
+plot(___)
+```
+
+<!--- consignes
+Etudiez la série spatio-temporelle. Intéressez vous à l'analyse spectrale de votre série. Renseignez vos observations en maximum 2 phrases.
+--->
+
+```{r spectrum}
+spectrum(___, spans = c(___, ___))
+```
+
+# Conclusion
+
+<!--- consignes
+Etudiez la série spatio-temporelle. Concluez votre analyse en maximum 3 phrases.
+--->

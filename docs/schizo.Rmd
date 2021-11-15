@@ -1,0 +1,80 @@
+---
+title: "Schizophrénie"
+author: "___"
+date: "24/10/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+SciViews::R
+library(pastecs)
+```
+
+# Ojectifs
+
+Ce document s'intéresse à l'efficacité d'un médicament sur la baisse de la réduction de l'activité cérébrale.
+
+# Contexte
+
+Un patient a réalisé un test d'activité cérébrale quotidiennement sur une période 120 jours. Au bout du 60 jour, les médecins lui prescrivent. Cette expérience débute le 12 octobre 2008.
+
+# Analyse
+
+<!--- consignes
+Importez le jeu de données schizo.tsv
+Transformez la variable votre objet shizo en objet ts
+--->
+
+```{r import}
+schizo <- read()
+schizo_ts <- ___(___)
+```
+
+<!--- consignes
+Etudiez la série spatio-temporelle. Intéressez vous aux début, à la fin et à la fréquence de cette série. Renseignez vos observations en maximum 3 phrases.
+--->
+
+```{r ts}
+
+```
+
+<!--- consignes
+Etudiez la série spatio-temporelle. Intéressez vous à l'autocorrélation de cette série. Renseignez vos observations en maximum 2 phrases.
+--->
+
+```{r acf}
+
+```
+
+<!--- consignes
+Etudiez la série spatio-temporelle. Réalisez une aggrégation/des statistiques glissantes. Réalisez un graphique de ce résumé des données. Renseignez vos observations en maximum 2 phrases.
+--->
+
+```{r statslide}
+schizo_sl <- ___(___)
+plot(schizo_sl)
+```
+
+<!--- consignes
+Etudiez la série spatio-temporelle. Intéressez vous à la tendance générale de votre série. Renseignez vos observations en maximum 2 phrases.
+--->
+
+```{r trendtest}
+schizo_trend <- ___(___)
+plot(___)
+```
+
+<!--- consignes
+Etudiez la série spatio-temporelle. Intéressez vous à l'analyse spectrale de votre série. Renseignez vos observations en maximum 2 phrases.
+--->
+
+```{r spectrum}
+spectrum(___, spans = c(___, ___))
+```
+
+# Conclusion
+
+<!--- consignes
+Etudiez la série spatio-temporelle. Concluez votre analyse en maximum 3 phrases.
+--->
