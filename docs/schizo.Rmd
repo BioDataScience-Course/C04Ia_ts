@@ -15,7 +15,6 @@ library(pastecs)
 
 Étudiez l'efficacité d'un médicament sur la réduction de l'activité cérébrale schizophrénique chez un même patient suivi quotidiennement en clinique psychiatrique pendant plusieurs mois. Le médicament n'est administré qu'à partir du 60^ème^ de son entrée en clinique.
 
-
 ## Analyse
 
 <!--% Importez le jeu de données `schizo.tsv` qui est dans le dossier `data`. Transformez-le en objet `ts` que vous nommerez `schizo_ts`. -->
@@ -36,24 +35,30 @@ library(pastecs)
 
 ```
 
-<!--% Calculez des statistiques glissantes pertinentes pour cette série. Réalisez-en aussi un graphique, ainsi qu'un paragraphe qui décrit ce que vous observes en maximum deux phrases. -->
+<!--% Calculez des statistiques glissantes pertinentes pour cette série. Réalisez ensuite un graphique de ces statistiques. -->
 
 ```{r statslide}
 
 ```
 
-<!--% Étudiez la tendance générale de votre série via bootstrap (y compris le graphique). Commentez-là en maximum deux phrases. -->
+<!-- Interprétez le graphique des statistiques glissantes en maximum trois phrases.-->
+
+<!--% Étudiez la tendance générale de votre série via bootstrap (y compris le graphique).-->
 
 ```{r trendtest}
 
 ```
 
-<!--% Effectuez une analyse spectrale de votre série (spectrogramme lissé). Indiquez ce que vous observez en maximum deux phrases. -->
+<!-- Interprétez le test de tendance générale en maximum deux phrases.-->
+
+<!--% Effectuez, si cela est justifiée, une analyse spectrale pertinente de votre série (spectrogramme lissé).-->
 
 ```{r spectrum}
 
 ```
 
+<!-- Interprétez l'analyse spectrale réalisée en maximum deux phrases.-->
+
 ## Conclusions
 
-<!--% Ajoutez ici un paragraphe qui reprend les caractéristiques importantes de cette série spatio-temporelle. -->
+<!--% Ajoutez ici en 3 phrases maximum les caractéristiques importantes de cette série spatio-temporelle. -->
