@@ -13,11 +13,11 @@ library(pastecs)
 
 ## Objectif
 
-Explorer une série temporelle relative à la production de bière en Australie. La production mensuelle de bière en mégalitres est enregistrée mensuellement depuis 1956. D'après vous, qulles sont les grandes caractéristiques de cette séries chronologique/ ?
+Explorer une série temporelle relative à la production de bière en Australie. La production mensuelle de bière en mégalitres est enregistrée mensuellement depuis 1956. D'après vous, quelles sont les grandes caractéristiques de cette séries chronologique ?
 
 ## Analyse
 
-<!--% Importez le jeu de données `beer.csv` du dossier `data`. Transformez-le en objet `ts`. -->
+<!--% Importez le jeu de données `beer.csv` du dossier `data`. Transformez-le en objet `ts` et nommez-le beer_ts. -->
 
 ```{r import}
 
@@ -51,13 +51,20 @@ Explorer une série temporelle relative à la production de bière en Australie.
 
 <!-- Interprétez le test de tendance générale en maximum deux phrases.-->
 
-<!--% Effectuez, si cela est justifiée, une analyse spectrale pertinente de votre série (spectrogramme lissé).-->
+<!--% Effectuez, si cela est justifié, une analyse spectrale pertinente de votre série (spectrogramme lissé). Le code prérempli permet de stationnariser la séries (il sera étudié au module 5 et vous n'avez pas besoin de le comprendre juste accepter que la série est stationnarisée). L'analyse spectrale peut être réalisée sur beer_stat ensuite. -->
 
 ```{r spectrum}
+beer_stat <- extract(tsd(beer_ts, s.window = 13, trend = TRUE), components = 2)
 
 ```
 
 <!-- Interprétez l'analyse spectrale réalisée en maximum deux phrases.-->
+
+<!--% Réaliser un graphique en boites de dispersion parallèles des la composante stationnarisée beer_stat (une boite de dispersion par mois) et interprétez-le en une phrase. -->
+
+```{r boxplot}
+
+```
 
 ## Conclusions
 

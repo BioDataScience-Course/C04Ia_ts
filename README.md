@@ -1,4 +1,4 @@
-# Analyse de deux séries temporelles
+# Analyse de deux séries spatio-temporelles
 
 ## Présentation des données
 
@@ -23,9 +23,9 @@ Dans ce projet, vous devrez :
 
 ## Consignes
 
-Décrivez des séries spatio-temporelles en complétant les deux fichiers `schizo.Rmd` et `beer.Rmd` du dossier `docs/`. Il est conseillé de prendre 1H maximum sur chaque document.
+Décrivez des séries spatio-temporelles en complétant les deux fichiers `schizo.Rmd` et `beer.Rmd` du dossier `docs/`. En principe, cela ne devrait pas vous prendre plus d'1h de travail sur chaque document.
 
-Lorsque vous aurez terminé de compléter les fichiers, compilez les document finaux HTML (bouton **Knit**) et assurez-vous que ces compilations se font sans erreurs, sinon, apportez les corrections nécessaires. Proposez des fichiers `.Rmd` qui compilent correctement fait partie de l'exercice.
+Lorsque vous aurez terminé de compléter les fichiers, compilez les document finaux HTML (bouton **Knit**) et assurez-vous que ces compilations se font sans erreurs, sinon, apportez les corrections nécessaires. Dans votre commit - push final, assurez-vous d'avoir des fichiers `.Rmd` qui compilent correctement. Cela fait partie de l'exercice. Vérifiez que votre dernier commit a bien été pushé sur GitHub avant la fin de la séance.
 
 Faites attention à bien citer vos sources. Le plagiat est, comme toujours, bien évidemment interdit. Si vous avez été aidé par quelqu'un (un ou une autre étudiant•e ou enseignant•e) pour l'une ou l'autre partie de votre projet, vous devez le ou la citer.
 
