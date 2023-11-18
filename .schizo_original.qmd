@@ -1,0 +1,132 @@
+---
+title: "Suivi d'un patient schizophrénique"
+author: "___"
+date: "`r Sys.Date()`"
+format:
+  html:
+    code-fold: true
+    code-tools: true
+    toc: true
+editor: visual
+lang: fr
+---
+
+```{r setup, include=FALSE}
+# This is needed to the SDD test suite, do not use in a "real" project
+if (!"tools:tests" %in% search())
+  source(here::here("tests/tools_tests.R"), attach(NULL, name = "tools:tests"))
+
+# Configure SciViews::R environment
+SciViews::R("ts", lang = "fr")
+```
+
+# Introduction et but
+
+La schizophrénie est un trouble mental chronique qui se marque par des hallucinations, des comportements désorganisés ou encore des idées délirantes. Les personnes affectées suivent des traitements combinant plusieurs approches : prise de médicaments, approches thérapeutiques et un soutien social.
+
+Cette étude est pour objectif d'évaluer l'efficacité d'un médicament spécifique sur la modulation de l'activité cérébrale associée à la schizophrénie.
+
+# Matériel et méthodes
+
+Un individu fait l'objet d'un suivi clinique quotidien en milieu psychiatrique sur une période étendue de plusieurs mois, soit 120 jours. À l'issue d'une première phase de 60 jours de surveillance durant laquelle aucun traitement médicamenteux n'a été administré, les praticiens décident d'initier l'administration d'une thérapeutique médicamenteuse de nouvelle génération.
+
+L'analyse est réalisée avec la [SciViews Box 2023](https://www.sciviews.org/software/svbox/) dans [Saturn Cloud](https://saturncloud.io) (Linux), utilisant le [logiciel R](https://www.r-project.org)(`r R.version.string`). Le package {pastecs} version `r packageVersion("pastecs")` est utilisé pour étudier la série temporelle.
+
+# Résultats
+
+<!--% Importez le jeu de données `schizo.tsv` qui est dans le dossier `data`. Transformez-le en objet `ts` que vous nommerez `schizo_ts`. Assurez-vous d'obtenir un objet dont la classe principale est `ts` et non `mts`. Définissez judicieusement le début, la fin et la fréquence de la série. plot(schizo_ts, ylab = "Activité cérébrale", xlab = "Temps [j]").-->
+
+```{r ts, record='ROA', object='schizo_ts', arg='tsp,class'}
+schizo <- read(___)
+schizo_ts <- ts(___)
+# Class de schizo_ts
+___
+# graphique de la série
+___
+```
+
+```{r tscomment, output= 'asis'}
+select_answer(r"-{
+[] -   La série comprend 120 observations avec une fréquence de 1.  
+[] -   La série comprend 120 observations avec une fréquence de 60.
+[] -   La série comprend 60 observations avec une fréquence de 120.
+[] -   La série débute en jour 1 et se termine en jour 120. Les dates exactes ne sont pas utiles pour cette analyse.
+[] -   La série débute le 12 novembre 2008 et se termine le 8 février 2009. Les dates sont cruciales dans cette analyse. }-")
+```
+
+<!--% Représentez graphiquement l'autocorrélation de cette série. -->
+
+```{r acf}
+___
+```
+
+```{r acfcomment, output= 'asis'}
+select_answer(r"-{
+[] -   Il n'y a pas d'autocorrélation dans cette série. Toutes les barres sortent de l'enveloppe de confiance à 95%.
+[] -   Une autocorrélation forte est présente. Même lors d'un décalage de 20 jours entre la série initiale et la série décalée, une corrélation significative est toujours présente.}-")
+```
+
+<!--% Calculez des statistiques pertinentes pour cette série. Découpez votre série en pas de temps de 10 observations. Réalisez ensuite un graphique de ces statistiques. Ajoutez des labels et une légende en français.-->
+
+```{r ssl, record='RNP', object='statsl', arg='xcut'}
+statsl <- stat.slide()
+statsl
+# Graphique des statistiques glissantes
+plot(___)
+legend(___)
+```
+
+<!--% Réalisez une analyse des tendances locales-->
+
+```{r loctrend, record='ROA', object='loc', arg='k,class'}
+loc <- ___
+```
+
+<!--% Interprétez le graphique des sommes cumulés. -->
+
+```{r loctrendcomment, output='asis'}
+select_answer(r"-{
+[] -   La ligne en pointillé indique le signal des sommes cumulés alors que la ligne rouge montre la série brute.
+[] -   La ligne en pointillé montre la série brute alors que la ligne rouge indique le signal des sommes cumulés.
+[] -  La série comprend de changement de tendance qui pourrait masquer une potentielle tendance générale.
+[] -  La série ne comprend pas de changement de tendance qui pourrait masquer une potentielle tendance générale.
+[] -  La ligne rouge croit au début signe que l’on se trouve au-dessus de la moyenne générale de la série. La seconde phase est un plateau, ce qui indique que l’on se trouve proche de la moyenne générale. La dernière phase indique que l’on se trouve en dessous de la moyenne générale. 
+[] -  La ligne rouge croit au début signe que l’activité cérébrale augmente. Ensuite, il y un plateau avec le maximum mesuré de l’activité cérébrale entre  le jour 60 et 80. Enfin, une diminution de l’activité cérébrale est observée}-")
+```
+
+<!--% Étudiez la tendance générale de votre série via bootstrap pour obtenir 1000 répétitions au total. (y compris le graphique).-->
+
+```{r trend, record='RNP', object='schizo_trend', arg='R,t0'}
+set.seed(3982756)
+schizo_trend <- ___
+___
+```
+
+<!--% Effectuez une analyse spectrale pertinente de votre série (périodogramme lissé + périodogramme cumulé). Utilisez un lissage de valeur 5 et 7. Le code prérempli permet de stationnariser la série (il sera étudié au module 5 et vous n'avez pas besoin de le comprendre juste accepter que la série est stationnarisée). L'analyse spectrale peut être réalisée sur schizo_stat ensuite. -->
+
+```{r spectrum, record='RNP', object='spec', arg='bandwidth'}
+# Stationnarisation de la série
+schizo_stat <- extract(tsd(schizo_ts, method = "diff"), components = 1)
+par(mfrow = c(1,2))
+spec <- spectrum(___)
+cp <- cpgram(___)
+par(mfrow = c(1,1))
+```
+
+<!-- Interprétez l'analyse spectrale et le test de tendance générale.-->
+
+```{r spectrumcomment, output='asis'}
+select_answer(r"-{
+[] -   Cette série a une tendance générale significative à l’augmentation.
+[] -   Il n’y a pas de tendance générale.
+[] -   Il y a une tendance générale significative à la diminution de la série.
+[] -   Cette série ne présente aucun cycle significatif.  
+[] -   Cette série présente un cycle toutes les demi-journées.
+[] -   Cette série présente un cycle tous les 2 jours et demi.}-")
+```
+
+# Discussion & conclusions
+
+<!--% Indiquez ci-dessous en 3 à 4 phrases les caractéristiques importantes de cette série spatio-temporelle. -->
+
+...votre discussion ici...
