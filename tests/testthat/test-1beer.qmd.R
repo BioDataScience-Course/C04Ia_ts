@@ -21,7 +21,9 @@ test_that("Le bloc-notes est-il compilé en un fichier final HTML ?", {
 })
 
 test_that("La structure du document est-elle conservée ?", {
-  expect_true(all(c("Introduction et but", "Matériel et méthodes", "Résultats", "Discussion & conclusions")
+  expect_true(all(c("Introduction et but", "Matériel et méthodes", "Résultats",
+    "Autocorrélation", "Statistiques glissantes par 5 ans", "Tendance générale",
+    "Analyse spectrale", "Production mensuelle", "Discussion et conclusion")
     %in% (rmd_node_sections(beer) |> unlist() |> unique())))
   # Les sections (titres) attendues du bloc-notes ne sont pas toutes présentes
   # Ce test échoue si vous avez modifié la structure du document, un ou
@@ -30,7 +32,9 @@ test_that("La structure du document est-elle conservée ?", {
   # d'origine dans le dépôt "template" du document (lien au début du fichier
   # README.md).
 
-  expect_true(all(c("setup", "import", "bacf", "bacfcomment", "bssl", "bsslcomment", "btrend", "btrendcomment", "bspectrum", "bspectrumcomment", "boxplot", "boxplotcomment")
+  expect_true(all(c("setup", "import", "bacf", "bacfcomment", "bssl",
+    "bsslcomment", "btrend", "btrendcomment", "bspectrum", "bspectrumcomment",
+    "boxplot", "boxplotcomment")
     %in% rmd_node_label(beer)))
   # Un ou plusieurs labels de chunks nécessaires à l'évaluation manquent
   # Ce test échoue si vous avez modifié la structure du document, un ou
@@ -79,8 +83,10 @@ test_that("Chunks 'import' : Création de l'objet 'beer_ts'", {
 })
 
 test_that("Chunks 'bacf' & 'bacfcomment' : Analyse de l'autocorrélation", {
-  # expect_true(is_identical_to_ref("bacf"))
-  # Le graphique de l'autocorrélation n'est pas réalisé ou est incorrect.
+  expect_true(is_identical_to_ref("bacf"))
+  # Le graphique de l'autocorrélation n'est pas réalisé ou est incorrect
+  # Vérifiez sur base des instructions vos calculs. Avez-vous bien assigné le
+  # résultat à l'objet 'bacf' ? Avez-vous bien utilisé la fonction 'acf' ?
   
   expect_true(is_identical_to_ref("bacfcomment"))
   # L'interprétation du graphique est (partiellement) fausse
@@ -94,7 +100,7 @@ test_that("Chunks 'bacf' & 'bacfcomment' : Analyse de l'autocorrélation", {
 test_that("Chunks 'bssl' & 'bsslcomment' : Statistiques glissantes", {
   expect_true(is_identical_to_ref("bssl"))
   # Les statistiques glissantes ne sont pas réalisées ou sont incorrectes.
-  # Avez-vous bien employé un pas de temps de 5 ans ? .
+  # Avez-vous bien employé un pas de temps de 5 ans ?
   
   expect_true(is_identical_to_ref("bsslcomment"))
   # L'interprétation du graphique est (partiellement) fausse
@@ -107,7 +113,8 @@ test_that("Chunks 'bssl' & 'bsslcomment' : Statistiques glissantes", {
 
 test_that("Chunks 'btrend' & 'btrendcomment' : Test de tendance générale par bootstrap", {
   expect_true(is_identical_to_ref("btrend"))
-  # Le test de tendance générale par bootstrap n'est pas réalisé ou est incorrect.
+  # Le test de tendance générale par bootstrap n'est pas réalisé ou est
+  # incorrect
   # Avez-vous bien employé une valeur de R de 500.
   
   expect_true(is_identical_to_ref("btrendcomment"))
@@ -122,8 +129,9 @@ test_that("Chunks 'btrend' & 'btrendcomment' : Test de tendance générale par b
 test_that("Chunks 'bspectrum' & 'bspectrumcomment' : Périodogramme de la série stationnarisée", {
   expect_true(is_identical_to_ref("bspectrum"))
   # Le graphique n'est pas réalisé ou est incorrect.
-  # Avez-vous bien employé les valeurs de 3 et de 5 sur votre série 
-  # stationnariée ('beer_stat') ?
+  # Avez-vous bien employé les valeurs de 3 et de 5 pour lisser le spectre ?
+  # Avez-vous effectué le périodogramme de la série stationnariée 'beer_stat' ?
+  # Avez-vous bien assigné le résultat du calcul à `bspec' ?
   
   expect_true(is_identical_to_ref("bspectrumcomment"))
   # L'interprétation du graphique est (partiellement) fausse
@@ -138,7 +146,8 @@ test_that("Chunks 'bspectrum' & 'bspectrumcomment' : Périodogramme de la série
 test_that("Chunks 'boxplot' & 'boxplotcomment' : Boites de dispersion de la série stationnarisée", {
   # expect_true(is_identical_to_ref("boxplot"))
   # Le graphique n'est pas réalisé ou est incorrect.
-  # Avez-vous bien employé la série stationnarisée ('beer_stat') ?
+  # Avez-vous bien employé la série stationnarisée 'beer_stat' ?
+  # Avez-vous bien assigné le résultat à 'bpl' ?
 
   expect_true(is_identical_to_ref("boxplotcomment"))
   # L'interprétation du graphique est (partiellement) fausse
@@ -151,7 +160,7 @@ test_that("Chunks 'boxplot' & 'boxplotcomment' : Boites de dispersion de la sér
 })
 
 test_that("La partie discussion et conclusions est-elle remplie ?", {
-  expect_true(!(rmd_select(beer, by_section("Discussion & conclusions")) |>
+  expect_true(!(rmd_select(beer, by_section("Discussion et conclusion")) |>
       as_document() |> grepl("...votre discussion ici...", x = _,
         fixed = TRUE) |> any()))
   # La discussion et la conclusion ne sont pas faites

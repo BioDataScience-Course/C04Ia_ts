@@ -1,7 +1,7 @@
 Package: C04Ia_ts
 Type: Package
 Version: 2.0.0
-Title: Analyses et interprétation de deux séries temporelles
+Title: Description de deux séries spatio-temporelles
 Description: Projet individuel cadré du module 4 du cours SDD III à l'UMONS
 Authors@R: c(
   person("Guyliann", "Engels", role = "aut",

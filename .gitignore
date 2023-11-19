@@ -69,6 +69,7 @@ vignettes/*.pdf
 # System files and others
 www/.vscode/
 .DS_Store
+._*
 .Thumbs.db
 Thumbs.db
 core.*

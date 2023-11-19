@@ -22,7 +22,8 @@ test_that("Le bloc-notes est-il compilé en un fichier final HTML ?", {
 
 test_that("La structure du document est-elle conservée ?", {
   expect_true(all(c("Introduction et but", "Matériel et méthodes", "Résultats",
-    "Discussion & conclusions")
+    "Identification de tendances locales", "Tendances générales",
+    "Autocorrélation", "Discussion et conclusion")
     %in% (rmd_node_sections(schizo) |> unlist() |> unique())))
   # Les sections (titres) attendues du bloc-notes ne sont pas toutes présentes
   # Ce test échoue si vous avez modifié la structure du document, un ou
@@ -31,8 +32,9 @@ test_that("La structure du document est-elle conservée ?", {
   # d'origine dans le dépôt "template" du document (lien au début du fichier
   # README.md).
 
-  expect_true(all(c("setup", "ts","tscomment", "acf", "acfcomment", "ssl", 
-    "loctrend", "loctrendcomment", "trend", "spectrum", "spectrumcomment")
+  expect_true(all(c("setup", "sts","stscomment", "sloctrend",
+    "sloctrendcomment", "ssepa1", "ssepa2", "strend1", "strend2",
+    "strendcomment", "sacf", "sacfcomment")
     %in% rmd_node_label(schizo)))
   # Un ou plusieurs labels de chunks nécessaires à l'évaluation manquent
   # Ce test échoue si vous avez modifié la structure du document, un ou
@@ -70,16 +72,16 @@ test_that("L'entête YAML a-t-il été complété ?", {
   # majuscule en début de nom et de prénom, et des minuscules ensuite.
 })
 
-test_that("Chunks 'ts' & 'tscomment': Création et description de l'objet 'schizo_ts'", {
-  expect_true(is_identical_to_ref("ts", "tsp"))
+test_that("Chunks 'sts' & 'stscomment': Création et description de l'objet 'schizo_ts'", {
+  expect_true(is_identical_to_ref("sts", "tsp"))
   # La série 'schizo_ts' n'est pas correcte. Les valeurs de début, 
   # de fin et/ou de fréquence sont (partiellement) incorrectes.
   
-  expect_true(is_identical_to_ref("ts", "class"))
-  # La série 'schizo_ts' n'est pas correcte. Il ne s'agit pas d'un objet 'ts'. 
-  # Avez-vous bien obtenu un objet ts et non un objet 'mts' 
+  expect_true(is_identical_to_ref("sts", "class"))
+  # La série 'schizo_ts' n'est pas correcte. Il ne s'agit pas d'un objet **ts**. 
+  # Avez-vous bien obtenu un objet **ts** et non un objet **mts** ?
   
-  expect_true(is_identical_to_ref("tscomment"))
+  expect_true(is_identical_to_ref("stscomment"))
   # L'interprétation du graphique est (partiellement) fausse
   # Vous devez cochez les phrases qui décrivent le graphique d'un 'x' entre les
   # crochets [] -> [x]. Ensuite, vous devez recompiler la version HTML du
@@ -88,12 +90,12 @@ test_that("Chunks 'ts' & 'tscomment': Création et description de l'objet 'schiz
   # cette aide plus tard dans le travail de groupe ou les interrogations !
 })
 
-test_that("Chunks 'acf' & 'acfcomment' : Analyse de l'autocorrélation", {
-  #expect_true(is_identical_to_ref("acf"))
-  # Le graphique de l'autocorrélation n'est pas réalisé ou est incorrect.
+test_that("Chunks 'sloctrend' & 'sloctrendcomment' : Identification de tendances locales", {
+  expect_true(is_identical_to_ref("sloctrend"))
+  # Le graphique des sommes cumulées n'est pas réalisé ou est incorrect.
   
-  expect_true(is_identical_to_ref("acfcomment"))
-  # L'interprétation du graphique est (partiellement) fausse
+  expect_true(is_identical_to_ref("sloctrendcomment"))
+  # L'interprétation du graphique des sommes cumulées est (partiellement) fausse
   # Vous devez cochez les phrases qui décrivent le graphique d'un 'x' entre les
   # crochets [] -> [x]. Ensuite, vous devez recompiler la version HTML du
   # bloc-notes (bouton 'Rendu') sans erreur pour réactualiser les résultats.
@@ -101,35 +103,37 @@ test_that("Chunks 'acf' & 'acfcomment' : Analyse de l'autocorrélation", {
   # cette aide plus tard dans le travail de groupe ou les interrogations !
 })
 
-test_that("Chunks 'ssl', 'loctrend' & 'loctrendcomment' : Statistiques glissantes et tendance locale", {
-  expect_true(is_identical_to_ref("ssl"))
-  # Les statistiques glissantes ne sont pas réalisées ou sont incorrectes.
-  # Avez-vous bien employé un pas de temps de 10 jours ? .
+test_that("Chunks 'ssepa1' & 'ssepa2' : Séparation en deux sous-séries", {
+  expect_true(is_identical_to_ref("ssepa1", "tsp"))
+  # La série 'schizo_ts1' n'est pas correcte. Les valeurs de début, 
+  # de fin et/ou de fréquence sont (partiellement) incorrectes.
   
-  expect_true(is_identical_to_ref("loctrend"))
-  # L'analyse des tendances locales n'est pas réalisé ou est incorrect.
+  expect_true(is_identical_to_ref("ssepa1", "class"))
+  # La série 'schizo_ts1' n'est pas correcte. Il ne s'agit pas d'un objet **ts**. 
+  # Avez-vous bien obtenu un objet **ts** et non un objet **mts** ?
   
-  expect_true(is_identical_to_ref("loctrendcomment"))
-  # L'interprétation du graphique est (partiellement) fausse
-  # Vous devez cochez les phrases qui décrivent le graphique d'un 'x' entre les
-  # crochets [] -> [x]. Ensuite, vous devez recompiler la version HTML du
-  # bloc-notes (bouton 'Rendu') sans erreur pour réactualiser les résultats.
-  # Assurez-vous de bien comprendre ce qui est coché ou pas : vous n'aurez plus
-  # cette aide plus tard dans le travail de groupe ou les interrogations !
+  expect_true(is_identical_to_ref("ssepa2", "tsp"))
+  # La série 'schizo_ts2' n'est pas correcte. Les valeurs de début, 
+  # de fin et/ou de fréquence sont (partiellement) incorrectes.
+  
+  expect_true(is_identical_to_ref("ssepa2", "class"))
+  # La série 'schizo_ts2' n'est pas correcte. Il ne s'agit pas d'un objet **ts**. 
+  # Avez-vous bien obtenu un objet **ts** et non un objet **mts** ?
 })
 
-test_that("Chunks 'trend', 'spectrum' & 'spectrumcomment' : Tendance générale et périodogramme", {
-  expect_true(is_identical_to_ref("trend"))
-  # Le test de tendance générale par bootstrap n'est pas réalisé ou est incorrect.
+test_that("Chunks 'strend1', 'strend2' & 'strendcomment' : Tendances générales", {
+  expect_true(is_identical_to_ref("strend1"))
+  # Le test de tendance générale par bootstrap de schizo_ts1 n'est pas réalisé
+  # ou est incorrect.
   # Avez-vous bien employé la bonne valeur de R ?
   
-  expect_true(is_identical_to_ref("spectrum"))
-  # Le periodogramme lissé n'est pas réalisé ou est incorrect.
-  # Avez-vous bien employé les valeurs de 5 et de 7 sur votre série 
-  # stationnariée ('schizo_stat') ?
+  expect_true(is_identical_to_ref("strend2"))
+  # Le test de tendance générale par bootstrap de schizo_ts2 n'est pas réalisé
+  # ou est incorrect.
+  # Avez-vous bien employé la bonne valeur de R ?
   
-  expect_true(is_identical_to_ref("bspectrumcomment"))
-  # L'interprétation du graphique est (partiellement) fausse
+  expect_true(is_identical_to_ref("strendcomment"))
+  # L'interprétation des tests de tendances générales est (partiellement) fausse
   # Vous devez cochez la phrase qui décrit le graphique d'un 'x' entre les
   # crochets [] -> [x]. Ensuite, vous devez recompiler la version HTML du
   # bloc-notes (bouton 'Rendu') sans erreur pour réactualiser les résultats.
@@ -137,8 +141,23 @@ test_that("Chunks 'trend', 'spectrum' & 'spectrumcomment' : Tendance générale 
   # cette aide plus tard dans le travail de groupe ou les interrogations !
 })
 
+test_that("Chunks 'sacf' & 'sacfcomment' : Analyse de l'autocorrélation", {
+  expect_true(is_identical_to_ref("sacf"))
+  # Les graphiques de l'autocorrélation des deux sous-séries n'est pas réalisé
+  # ou est incorrect.
+  
+  expect_true(is_identical_to_ref("sacfcomment"))
+  # L'interprétation des graphiques d'autocorrélation des deux sous-séries est
+  # (partiellement) fausse
+  # Vous devez cochez les phrases qui décrivent le graphique d'un 'x' entre les
+  # crochets [] -> [x]. Ensuite, vous devez recompiler la version HTML du
+  # bloc-notes (bouton 'Rendu') sans erreur pour réactualiser les résultats.
+  # Assurez-vous de bien comprendre ce qui est coché ou pas : vous n'aurez plus
+  # cette aide plus tard dans le travail de groupe ou les interrogations !
+})
+
 test_that("La partie discussion et conclusions est-elle remplie ?", {
-  expect_true(!(rmd_select(schizo, by_section("Discussion & conclusions")) |>
+  expect_true(!(rmd_select(schizo, by_section("Discussion et conclusion")) |>
       as_document() |> grepl("...votre discussion ici...", x = _,
         fixed = TRUE) |> any()))
   # La discussion et la conclusion ne sont pas faites
