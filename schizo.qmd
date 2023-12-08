@@ -30,13 +30,13 @@ Cette étude a pour objectif d'évaluer l'efficacité d'un médicament spécifiq
 
 Un individu fait l'objet d'un suivi clinique quotidien en milieu psychiatrique sur une période de 120 jours. À l'issue d'une première phase de 60 jours de surveillance durant laquelle aucun traitement médicamenteux n'a été administré, les praticiens décident d'initier l'administration d'un médicament de nouvelle génération.
 
-L'analyse est réalisée avec la [SciViews Box 2023](https://www.sciviews.org/software/svbox/) dans [Saturn Cloud](https://saturncloud.io) (Linux), utilisant le [logiciel R](https://www.r-project.org)(`r R.version.string`). Le package {pastecs} version `r packageVersion("pastecs")` est utilisé pour étudier la série temporelle.
+L'analyse est réalisée avec la [SciViews Box 2023](https://www.sciviews.org/software/svbox/) dans [Saturn Cloud](https://saturncloud.io) (Linux), utilisant le [logiciel R](https://www.r-project.org) (`r R.version.string`). Le package {pastecs} version `r packageVersion("pastecs")` est utilisé pour étudier la série temporelle.
 
 # Résultats
 
-L'évolution de l'activité cérébrale du patient schizophrénique est représenté ci-dessous pour les 120 jours de l'étude. Le trait vertical pointillé rouge indique à partir de quel moment le traitement médicamenteux est appliqué.
+L'évolution de l'activité cérébrale du patient schizophrénique est représentée ci-dessous pour les 120 jours de l'étude. Le trait vertical pointillé rouge indique à partir de quel moment le traitement médicamenteux est appliqué.
 
-<!--% Importez le jeu de données `schizo.tsv` qui est dans le dossier `data`. Transformez-le en objet `ts` que vous nommerez `schizo_ts`. Assurez-vous d'obtenir un objet dont la classe principale est `ts` et non `mts`. Définissez judicieusement le début, la fin et la fréquence de la série. plot(schizo_ts, ylab = "Activité cérébrale", xlab = "Temps [j]").-->
+<!--% Importez le jeu de données `schizo.tsv` qui est dans le dossier `data`. Transformez-le en objet **ts** que vous nommerez `schizo_ts`. Assurez-vous d'obtenir un objet dont la classe principale est **ts** et non **mts**. Définissez judicieusement le début, la fin et la fréquence de la série. Le graphique de la série est ensuite réalisé (code prérempli). -->
 
 ```{r sts, record='ROA', object='schizo_ts', arg='tsp,class'}
 schizo <- suppressMessages(read(___))
@@ -44,7 +44,7 @@ schizo_ts <- ts(___)
 # Classe de schizo_ts
 ___
 # Graphique de la série
-___
+plot(schizo_ts, ylab = "Activité cérébrale", xlab = "Temps [j]")
 abline(v = 60, col = "red", lty = 2)
 ```
 
@@ -53,7 +53,7 @@ select_answer(r"-{
 [] -   La série comprend 120 observations avec une fréquence de 1.
 [] -   La série comprend 120 observations avec une fréquence de 60.
 [] -   La série comprend 60 observations avec une fréquence de 120.
-[] -   La série débute en jour 1 et se termine en jour 120. Les dates exactes ne sont pas utiles pour cette analyse.
+[] -   La série débute au jour 1 et se termine au jour 120. Les dates exactes ne sont pas utiles pour cette analyse.
 [] -   La série débute le 12 novembre 2008 et se termine le 8 février 2009. Les dates sont cruciales dans cette analyse.}-")
 ```
 
@@ -71,10 +71,10 @@ loc <- ___
 
 ```{r sloctrendcomment, output='asis'}
 select_answer(r"-{
-[] -   La ligne en pointillé indique le signal des sommes cumulés alors que la ligne rouge montre la série brute.
-[] -   La ligne en pointillé montre la série brute alors que la ligne rouge indique le signal des sommes cumulés.
-[] -   Durant les 60 premiers jours (période pré-traitement) l'activité cérébrale est stable.
-[] -   Durant les 60 premiers jours (période pré-traitement) l'activité cérébrale est supérieure à la moyenne sur l'ensemble de la période observée.
+[] -   La ligne en pointillé indique le signal des sommes cumulées alors que la ligne rouge montre la série brute.
+[] -   La ligne en pointillé montre la série brute alors que la ligne rouge indique le signal des sommes cumulées.
+[] -   Durant les 60 premiers jours (période pré-traitement) l'activité cérébrale est moyenne.
+[] -   Durant les 60 premiers jours (période pré-traitement) l'activité cérébrale est supérieure à la moyenne.
 [] -   Une transition est visible au 61^e^ jour suite au démarrage du traitement.
 [] -   Aucune transition n'est visible au 61^e^ jour suite au démarrage du traitement.
 [] -   Le traitement fait effet directement à partir du 61^e^ jour car l'activité cérébrale décroit.
@@ -84,7 +84,7 @@ select_answer(r"-{
 
 La transition avant - après le 60^e^ jour étant bien visible, nous séparons la séries initiale en deux pour analyser les deux parties séparément.
 
-<!--% Séparez la série en schizo_ts1 du jour 1 au jour 60 et schizo_ts2 du jour 61 au jour 120. -->
+<!--% Séparez la série en schizo_ts1 du jour 1 au jour 60 et schizo_ts2 du jour 61 au jour 120. Ne recréez pas de nouvelles séries à partir des données de départ, mais utilisez la fonction adéquate de manipulation de série sur `schizo_ts` pour extraire `schizo_ts1` et `schizo_ts2`. -->
 
 ```{r ssepa1, record='ROA', object='schizo_ts1', arg='tsp,class'}
 schizo_ts1 <- ___
@@ -98,7 +98,7 @@ schizo_ts2 <- ___
 
 Nous déterminons si des tendances significatives existent dans les deux parties de la série en utilisant un test bootstrapé. Voici l'analyse pour la partie pré-traitement.
 
-<!--% Étudiez les tendances générales sur schizo_ts1 et schizo_ts2 en bootstrapant 999 fois (y compris les graphiques). -->
+<!--% Étudiez les tendances générales sur `schizo_ts1` et `schizo_ts2` en bootstrapant 999 fois, et faites-en des graphiques. -->
 
 ```{r strend1, record='RNP', object='schizo_trend1', arg='R,t0'}
 set.seed(3982756)
@@ -128,7 +128,7 @@ select_answer(r"-{
 
 Nous avons aussi analysé l'autocorrélation avant et pendant le traitement.
 
-<!--% Représentez graphiquement l'autocorrélation de cette série. -->
+<!--% Représentez graphiquement l'autocorrélation de ces deux séries. -->
 
 ```{r sacf, record='ROP', object = 'sacf1'}
 par(mfrow = c(1, 2))
