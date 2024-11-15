@@ -10,9 +10,9 @@ Authors@R: c(
     email = "phgrosjean@sciviews.org",
     comment = c(ORCID = "0000-0002-2694-9471"))
   )
-Depends: R (>= 4.2.3)
-SystemRequirements: SciViews Box 2023 (https://www.sciviews.org/software/svbox/)
-License: MIT
+Depends: R (>= 4.3.0)
+SystemRequirements: SciViews Box 2024 (https://www.sciviews.org/software/svbox/)
+License: CC BY-NC-SA 4.0
 URL: https://github.com/BioDataScience-Course/C04Ia_ts
 BugReports: https://github.com/BioDataScience-Course/C04Ia_ts/issues
 Encoding: UTF-8
