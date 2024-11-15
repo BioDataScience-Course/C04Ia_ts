@@ -28,7 +28,7 @@ Un recensement de la production brassicole en Australie est réalisé mensuellem
 
 La production mensuelle de bière, exprimée en mégalitres, a été mesurée sur la période s'étendant de janvier 1956 à août 1995 en Australie.
 
-L'analyse est réalisée avec la [SciViews Box 2023](https://www.sciviews.org/software/svbox/) dans [Saturn Cloud](https://saturncloud.io) (Linux), utilisant le [logiciel R](https://www.r-project.org) (`r R.version.string`). Le package {pastecs} version `r packageVersion("pastecs")` est utilisé pour étudier la série temporelle.
+L'analyse est réalisée avec la [SciViews Box 2024](https://www.sciviews.org/software/svbox/) dans [Saturn Cloud](https://saturncloud.io) (Linux), utilisant le [logiciel R](https://www.r-project.org) (`r R.version.string`). Le package {pastecs} version `r packageVersion("pastecs")` est utilisé pour étudier la série temporelle.
 
 # Résultats
 
@@ -59,6 +59,7 @@ select_answer(r"-{
 [] -  L’autocorrélation est forte et indique la grande différence entre la série initiale et la série décalée.
 [] -  L’autocorrélation est nulle et indique la similitude importante entre la série initiale et la série décalée.
 [] -  L’autocorrélation est nulle et indique la différence importante entre la série initiale et la série décalée.
+  
 [] -   Toutes les barres sont comprises à l’intérieur de l’enveloppe de confiance à 5%.
 [] -   Toutes les barres sont comprises à l’extérieur de l’enveloppe de confiance à 5%.
 [] -   Toutes les barres sont comprises à l’intérieur de l’enveloppe de confiance à 95%.
@@ -101,6 +102,7 @@ select_answer(r"-{
 [] -  Il y a une tendance générale significative à l’augmentation de la série.
 [] -  Il n’y a pas de tendance générale.
 [] -  Il y a une tendance générale significative à la diminution de la série.
+  
 [] -  499 tests de corrélation sont réalisés lors de ce test par bootstrap.
 [] -  500 tests de corrélation sont réalisés lors de ce test par bootstrap.
 [] -  501 tests de corrélation sont réalisés lors de ce test par bootstrap.}-")

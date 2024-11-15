@@ -9,4 +9,4 @@ library(parsermd)
 
 source("tools_tests.R")
 
-test_dir("testthat", reporter = sddReporter)
+test_dir("testthat", reporter = sddReporter, times = 10L)
