@@ -28,7 +28,7 @@ Un recensement de la production brassicole en Australie est réalisé mensuellem
 
 La production mensuelle de bière, exprimée en mégalitres, a été mesurée sur la période s'étendant de janvier 1956 à août 1995 en Australie.
 
-L'analyse est réalisée avec la [SciViews Box 2024](https://www.sciviews.org/software/svbox/) dans [Saturn Cloud](https://saturncloud.io) (Linux), utilisant le [logiciel R](https://www.r-project.org) (`r R.version.string`). Le package {pastecs} version `r packageVersion("pastecs")` est utilisé pour étudier la série temporelle.
+L'analyse est réalisée avec la [SciViews Box 2025](https://www.sciviews.org/software/svbox/) dans [Saturn Cloud](https://saturncloud.io) (Linux Ubuntu 22.04), utilisant le [logiciel R](https://www.r-project.org) (`r R.version.string`). Le package {pastecs} version `r packageVersion("pastecs")` est utilisé pour étudier la série temporelle.
 
 # Résultats
 
@@ -79,10 +79,10 @@ legend(___)
 
 ```{r bsslcomment, output='asis'}
 select_answer(r"-{
-[] -  Deux phases marquées sont observables. Une augmentation de 1956 à 1980 suivi par une diminution similaire à l’augmentation de la production.
-[] -  Deux phases marquées sont observables. Une augmentation de 1956 à 1980 suivis par une diminution légère.
-[] -  Trois phases sont observables. Une augmentation de 1956 à 1975 suivis par une phase stationnaire de 10 ans puis d’une diminution similaire à l’augmentation initiale de la production.
-[] -  Trois phases sont observables. Une augmentation de 1956 à 1975 suivis par une phase stationnaire de 10 ans puis d’une diminution légère de la production.}-")
+[] -  Deux phases marquées sont observables. Une augmentation de 1956 à 1980 est suivie par une diminution similaire à l’augmentation de la production.
+[] -  Deux phases marquées sont observables. Une augmentation de 1956 à 1980 est suivie par une diminution légère.
+[] -  Trois phases sont observables. Une augmentation de 1956 à 1975 est suivie par une phase stationnaire de 10 ans puis d’une diminution similaire à l’augmentation initiale de la production.
+[] -  Trois phases sont observables. Une augmentation de 1956 à 1975 est suivie par une phase stationnaire de 10 ans puis d’une diminution légère de la production.}-")
 ```
 
 ## Tendance générale

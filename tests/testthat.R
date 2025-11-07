@@ -10,4 +10,4 @@ suppressMessages(library(learnitgrid))
 
 source("tools_tests.R")
 
-test_dir("testthat", reporter = sddReporter, times = 10L)
+test_dir("testthat", reporter = sddReporter)
