@@ -73,3 +73,5 @@ www/.vscode/
 .Thumbs.db
 Thumbs.db
 core.*
+
+**/*.quarto_ipynb

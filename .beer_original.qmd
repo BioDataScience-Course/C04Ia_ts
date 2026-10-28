@@ -9,6 +9,8 @@ format:
     toc: true
 editor: visual
 lang: fr
+svbox: 2026
+vm: "Ubuntu 24.04.3 LTS"
 ---
 
 ```{r setup, include=FALSE}
@@ -28,7 +30,18 @@ Un recensement de la production brassicole en Australie est réalisé mensuellem
 
 La production mensuelle de bière, exprimée en mégalitres, a été mesurée sur la période s'étendant de janvier 1956 à août 1995 en Australie.
 
-L'analyse est réalisée avec la [SciViews Box 2025](https://www.sciviews.org/software/svbox/) dans [Saturn Cloud](https://saturncloud.io) (Linux Ubuntu 22.04), utilisant le [logiciel R](https://www.r-project.org) (`r R.version.string`). Le package {pastecs} version `r packageVersion("pastecs")` est utilisé pour étudier la série temporelle.
+L'analyse est réalisée dans la  [SciViews Box `r rmarkdown::metadata$svbox`](https://www.sciviews.org/software/svbox/) dans [Saturn Cloud](https://saturncloud.io) (`r rmarkdown::metadata$vm`) avec le [logiciel R](https://www.r-project.org) (`r R.version.string`). Le package {pastecs} version `r packageVersion("pastecs")` est utilisé pour étudier la série temporelle.
+
+<!--% Spécifiez si vous avez employé l'intelligence artificielle dans votre projet. -->
+
+```{r ai_comment, output='asis'}
+select_answer(r"-{
+[] -   Ce document a été rédigé en étant assisté par l'Intelligence Artificielle.
+[] -   Ce document a été rédigé sans recours à l'Intelligence Artificielle.}-")
+```
+
+<!--% Précisez ci-dessous l'utilisation que vous avez faite de l'IA. Citez le modèle utilisé. -->
+
 
 # Résultats
 
@@ -37,7 +50,7 @@ Voici le graphique de la série relative à la production mensuelle de bière en
 <!--% Importez le jeu de données `beer.csv` qui est dans le dossier `data`. Transformez-le en objet **ts** que vous nommerez `beer_ts`. Assurez-vous d'obtenir un objet dont la classe principale est **ts** et non **mts**. Définissez judicieusement le début, la fin et la fréquence de la série. Affichez le graphique de votre objet **ts**. Ajoutez les labels suivants "Temps [année]" et "Production mensuelle de bière [ML]". -->
 
 ```{r import, record='ROA', object='beer_ts', arg='tsp,class'}
-# Importation 
+# Importation
 beer <- suppressMessages(read(___))
 # Conversion en ts
 beer_ts <- ____
@@ -55,15 +68,15 @@ bacf <- ___
 
 ```{r bacfcomment, output='asis'}
 select_answer(r"-{
-[] -  L’autocorrélation est forte et indique la grande similitude entre la série initiale et la série décalée.
-[] -  L’autocorrélation est forte et indique la grande différence entre la série initiale et la série décalée.
-[] -  L’autocorrélation est nulle et indique la similitude importante entre la série initiale et la série décalée.
-[] -  L’autocorrélation est nulle et indique la différence importante entre la série initiale et la série décalée.
-  
-[] -   Toutes les barres sont comprises à l’intérieur de l’enveloppe de confiance à 5%.
-[] -   Toutes les barres sont comprises à l’extérieur de l’enveloppe de confiance à 5%.
-[] -   Toutes les barres sont comprises à l’intérieur de l’enveloppe de confiance à 95%.
-[] -   Toutes les barres sont comprises à l’extérieur de l’enveloppe de confiance à 95%.}-")
+[] -   L'autocorrélation est forte et indique la grande similitude entre la série initiale et la série décalée.
+[] -   L'autocorrélation est nulle et indique la différence importante entre la série initiale et la série décalée.
+[] -   L'autocorrélation est nulle et indique la similitude importante entre la série initiale et la série décalée.
+[] -   L'autocorrélation est forte et indique la grande différence entre la série initiale et la série décalée.
+
+[] -   Toutes les barres sont comprises à l'intérieur de l'enveloppe de confiance à 5 %.
+[] -   Toutes les barres sont comprises à l'extérieur de l'enveloppe de confiance à 5 %.
+[] -   Toutes les barres sont comprises à l'intérieur de l'enveloppe de confiance à 95 %.
+[] -   Toutes les barres sont comprises à l'extérieur de l'enveloppe de confiance à 95 %.}-")
 ```
 
 ## Statistiques glissantes par 5 ans
@@ -79,17 +92,17 @@ legend(___)
 
 ```{r bsslcomment, output='asis'}
 select_answer(r"-{
-[] -  Deux phases marquées sont observables. Une augmentation de 1956 à 1980 est suivie par une diminution similaire à l’augmentation de la production.
-[] -  Deux phases marquées sont observables. Une augmentation de 1956 à 1980 est suivie par une diminution légère.
-[] -  Trois phases sont observables. Une augmentation de 1956 à 1975 est suivie par une phase stationnaire de 10 ans puis d’une diminution similaire à l’augmentation initiale de la production.
-[] -  Trois phases sont observables. Une augmentation de 1956 à 1975 est suivie par une phase stationnaire de 10 ans puis d’une diminution légère de la production.}-")
+[] -   Trois phases sont observables. Une augmentation de 1956 à 1975 est suivie par une phase stationnaire de 10 ans puis par une diminution légère de la production.
+[] -   Trois phases sont observables. Une augmentation de 1956 à 1975 est suivie par une phase stationnaire de 10 ans puis par une diminution similaire à l'augmentation initiale de la production.
+[] -   Deux phases marquées sont observables. Une augmentation de 1956 à 1980 est suivie par une diminution légère.
+[] -   Deux phases marquées sont observables. Une augmentation de 1956 à 1980 est suivie par une diminution similaire à l'augmentation de la production.}-")
 ```
 
 ## Tendance générale
 
-Nous réalisons un bootstrap 500 fois pour déterminer si une tendance générale se dégage de manière significative.
+Nous réalisons un test par bootstrap avec 500 rééchantillonnages pour déterminer si une tendance générale se dégage de manière significative.
 
-<!--%  Effectuez un test de tendance générale par bootstrap avec une valeur de R de 500. Visualisez les résultats du test à l'aide de graphiques. -->
+<!--% Effectuez un test de tendance générale par bootstrap avec une valeur de R de 500. Visualisez les résultats du test à l'aide de graphiques. -->
 
 ```{r btrend, record='ROP', object='beer_trend', arg='R,t0'}
 set.seed(87444)
@@ -99,20 +112,20 @@ ___
 
 ```{r btrendcomment, output='asis'}
 select_answer(r"-{
-[] -  Il y a une tendance générale significative à l’augmentation de la série.
-[] -  Il n’y a pas de tendance générale.
-[] -  Il y a une tendance générale significative à la diminution de la série.
-  
-[] -  499 tests de corrélation sont réalisés lors de ce test par bootstrap.
-[] -  500 tests de corrélation sont réalisés lors de ce test par bootstrap.
-[] -  501 tests de corrélation sont réalisés lors de ce test par bootstrap.}-")
+[] -   Il y a une tendance générale significative à l'augmentation de la série.
+[] -   Il y a une tendance générale significative à la diminution de la série.
+[] -   Il n'y a pas de tendance générale.
+
+[] -   499 tests de corrélation sont réalisés lors de ce test par bootstrap.
+[] -   500 tests de corrélation sont réalisés lors de ce test par bootstrap.
+[] -   501 tests de corrélation sont réalisés lors de ce test par bootstrap.}-")
 ```
 
 ## Analyse spectrale
 
 Nous stationnarisons la série par la méthode des différences avant de faire l'analyse spectrale sans la tendance générale.
 
-<!--%  Effectuez une analyse spectrale de votre série. Réalisez un périodogramme lissé avec des valeurs de 3 et de 5. Le code prérempli permet de stationnariser la série (il sera étudié au module 5 et vous n'avez pas besoin de le comprendre, juste accepter que la série est stationnarisée). -->
+<!--% Effectuez une analyse spectrale de votre série. Réalisez un périodogramme lissé avec des valeurs de 3 et de 5. Le code prérempli permet de stationnariser la série (il sera étudié au module 5 et vous n'avez pas besoin de le comprendre, juste accepter que la série est stationnarisée). -->
 
 ```{r bspectrum, record='ROP', object='bspec', arg='bandwidth'}
 beer_stat <- extract(decdiff(beer_ts, lag = 6, order = 1), components = 1)
@@ -142,16 +155,41 @@ bpl <- boxplot(___ col = "cornsilk")
 
 ```{r boxplotcomment, output='asis'}
 select_answer(r"-{
-[] -   La production est la plus importante en janvier avec 15 ML produits.
-[] -   La production est la plus importante en juin avec 25 ML produits.
-[] -   La production la plus importante est en décembre avec 55 ML produits.
-[] -   La production est la plus importante en janvier avec 15 ML produits en plus par rapport à l'année (valeur médiane).
-[] -   La production est la plus importante en juin avec 25 ML produits en plus par rapport à l'année (valeur médiane).
-[] -   La production est la plus importante en décembre avec 55 ML produits en plus par rapport à l'année (valeur médiane).}-")
+[] -   La série stationnarisée est maximale en janvier, avec une valeur médiane de 20 ML.
+[] -   La série stationnarisée est maximale en novembre, avec une valeur médiane de 36 ML.
+[] -   La série stationnarisée est maximale en décembre, avec une valeur médiane de 58 ML.
+
+[] -   La série stationnarisée est minimale en mai, avec une valeur médiane de -29 ML.
+[] -   La série stationnarisée est minimale en juin, avec une valeur médiane de -59 ML.
+[] -   La série stationnarisée est minimale en juillet, avec une valeur médiane de -18 ML.
+
+[] -   Les valeurs médianes sont positives d'octobre à mars et négatives d'avril à septembre.
+[] -   Les valeurs médianes sont positives d'avril à septembre et négatives d'octobre à mars.}-")
 ```
 
 # Discussion et conclusion
 
-<!--% Indiquez ci-dessous en 3 à 4 phrases les caractéristiques importantes de cette série spatio-temporelle. -->
+<!--% Indiquez les caractéristiques importantes de cette série spatio-temporelle en sélectionnant les phrases correctes ci-dessous. -->
 
-...votre discussion ici...
+```{r bconclusionscomment, output='asis'}
+select_answer(r"-{
+[] -   La production de bière en Australie augmente jusqu'au milieu des années 1970, puis elle stagne et diminue même légèrement vers la fin.
+[] -   La production de bière en Australie augmente jusqu'au milieu des années 1970, puis elle diminue fortement, de manière symétrique à l'augmentation initiale.
+[] -   La production de bière en Australie augmente de manière continue sur toute la période étudiée.
+[] -   La production de bière en Australie diminue jusqu'au milieu des années 1970, puis elle stagne et augmente même légèrement vers la fin.
+
+[] -   Globalement, la tendance générale à la diminution est significative.
+[] -   Globalement, il n'y a pas de tendance générale significative.
+[] -   Globalement, la tendance générale à l'augmentation est significative.
+
+[] -   La série présente une autocorrélation forte.
+[] -   La série présente une autocorrélation nulle.
+
+[] -   Des cycles mensuel et semestriel sont détectés.
+[] -   Des cycles annuel et de quatre mois sont détectés.
+[] -   Aucun cycle significatif n'est détecté.
+
+[] -   Au niveau annuel, la production est maximale en juin et minimale en décembre.
+[] -   Au niveau annuel, la production est maximale en janvier et minimale en juillet.
+[] -   Au niveau annuel, la production est maximale en décembre et minimale en juin.}-")
+```

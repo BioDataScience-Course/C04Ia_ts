@@ -20,6 +20,10 @@ Assurez-vous que vos documents compilent en format HTML sans erreur à la fin (b
 usethis::browse_github()
 ```
 
+## Évaluation : un document qui compile, sur GitHub
+
+**Un projet dont le document ne compile pas à partir de la version présente sur GitHub obtient la note de zéro pour ce travail.** Un document qui compile sur votre ordinateur, mais pas depuis GitHub (fichier oublié dans le commit, push non effectué...), est considéré comme ne compilant pas.
+
 ## Utilisation de l’IA
 
 Dans le cadre de votre travail, vous avez le droit d’être aidé par l’intelligence artificielle. Le chatbot SciViews est disponible dans votre RStudio sur Saturn Cloud via l’addin Help. Il répond aux questions concernant le langage R, les statistiques et la science des données.
