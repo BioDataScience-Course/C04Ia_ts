@@ -30,7 +30,7 @@ Un recensement de la production brassicole en Australie est réalisé mensuellem
 
 La production mensuelle de bière, exprimée en mégalitres, a été mesurée sur la période s'étendant de janvier 1956 à août 1995 en Australie.
 
-L'analyse est réalisée dans la  [SciViews Box `r rmarkdown::metadata$svbox`](https://www.sciviews.org/software/svbox/) dans [Saturn Cloud](https://saturncloud.io) (`r rmarkdown::metadata$vm`) avec le [logiciel R](https://www.r-project.org) (`r R.version.string`). Le package {pastecs} version `r packageVersion("pastecs")` est utilisé pour étudier la série temporelle.
+L'analyse est réalisée dans la [SciViews Box `r rmarkdown::metadata$svbox`](https://www.sciviews.org/software/svbox/) dans [Saturn Cloud](https://saturncloud.io) (`r rmarkdown::metadata$vm`) avec le [logiciel R](https://www.r-project.org) (`r R.version.string`). Le package {pastecs} version `r packageVersion("pastecs")` est utilisé pour étudier la série temporelle.
 
 <!--% Spécifiez si vous avez employé l'intelligence artificielle dans votre projet. -->
 
@@ -41,7 +41,6 @@ select_answer(r"-{
 ```
 
 <!--% Précisez ci-dessous l'utilisation que vous avez faite de l'IA. Citez le modèle utilisé. -->
-
 
 # Résultats
 

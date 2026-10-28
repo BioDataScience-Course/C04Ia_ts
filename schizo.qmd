@@ -32,7 +32,7 @@ Cette étude a pour objectif d'évaluer l'efficacité d'un médicament spécifiq
 
 Un individu fait l'objet d'un suivi clinique quotidien en milieu psychiatrique sur une période de 120 jours. À l'issue d'une première phase de 60 jours de surveillance durant laquelle aucun traitement médicamenteux n'a été administré, les praticiens décident d'initier l'administration d'un médicament de nouvelle génération.
 
-L'analyse est réalisée dans la  [SciViews Box `r rmarkdown::metadata$svbox`](https://www.sciviews.org/software/svbox/) dans [Saturn Cloud](https://saturncloud.io) (`r rmarkdown::metadata$vm`) avec le [logiciel R](https://www.r-project.org) (`r R.version.string`). Le package {pastecs} version `r packageVersion("pastecs")` est utilisé pour étudier la série temporelle.
+L'analyse est réalisée dans la [SciViews Box `r rmarkdown::metadata$svbox`](https://www.sciviews.org/software/svbox/) dans [Saturn Cloud](https://saturncloud.io) (`r rmarkdown::metadata$vm`) avec le [logiciel R](https://www.r-project.org) (`r R.version.string`). Le package {pastecs} version `r packageVersion("pastecs")` est utilisé pour étudier la série temporelle.
 
 <!--% Spécifiez si vous avez employé l'intelligence artificielle dans votre projet. -->
 
@@ -43,7 +43,6 @@ select_answer(r"-{
 ```
 
 <!--% Précisez ci-dessous l'utilisation que vous avez faite de l'IA. Citez le modèle utilisé. -->
-
 
 # Résultats
 
