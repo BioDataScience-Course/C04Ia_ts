@@ -1,4 +1,4 @@
-# Description de deux séries spatio-temporelle
+# Description de deux séries spatio-temporelles
 
 Ce projet nécessite d'avoir assimilé l'ensemble des notions du quatrième module du cours de science des données biologiques 3. Il correspond au dépôt GitHub <https://github.com/BioDataScience-Course/C04Ia_ts>.
 
@@ -22,8 +22,14 @@ usethis::browse_github()
 
 ## Évaluation : un document qui compile, sur GitHub
 
-**Un projet dont le document ne compile pas à partir de la version présente sur GitHub obtient la note de zéro pour ce travail.** Un document qui compile sur votre ordinateur, mais pas depuis GitHub (fichier oublié dans le commit, push non effectué...), est considéré comme ne compilant pas.
+**Un projet dont le(s) document(s) ne compile(nt) pas à partir de la version présente sur GitHub obtient la note de zéro pour ce travail.** Un document qui compile sur votre ordinateur, mais pas depuis GitHub (fichier oublié dans le commit, push non effectué...), est considéré comme ne compilant pas.
+
+Cette règle s'applique aux deux documents : `beer.qmd` et `schizo.qmd` doivent tous deux produire leur version HTML sans erreur à partir du contenu de votre dépôt GitHub.
 
 ## Utilisation de l’IA
 
 Dans le cadre de votre travail, vous avez le droit d’être aidé par l’intelligence artificielle. Le chatbot SciViews est disponible dans votre RStudio sur Saturn Cloud via l’addin Help. Il répond aux questions concernant le langage R, les statistiques et la science des données.
+
+Vous restez responsable de tout ce que contiennent vos documents : vérifiez le code et les interprétations proposés par l'IA, et assurez-vous d'être capable de les expliquer.
+
+L'utilisation de l'IA doit être déclarée dans les deux documents `beer.qmd` et `schizo.qmd`, dans la sous-section **Déclaration sur l'utilisation de l'IA** de la partie Matériel et méthodes : cochez la case qui correspond à votre situation dans le chunk `ai_comment` (remplacez `[]` par `[X]`), puis précisez en dessous l'utilisation que vous avez faite de l'IA et citez le ou les modèles employés.

@@ -66,7 +66,7 @@ test_that("La structure du document est-elle conservée ?", {
   # Vérifiez la structure du document par rapport à la version d'origine dans
   # le dépôt "template" du document (lien au début du fichier README.md).
 
-  expect_true(any(duplicated(rmd_node_label(schizo))))
+  expect_false(any(duplicated(na.omit(rmd_node_label(schizo)))))
   # Un ou plusieurs labels de chunks sont dupliqués
   # Les labels de chunks doivent absolument être uniques. Vous ne pouvez pas
   # avoir deux chunks qui portent le même label. Vérifiez et modifiez le label

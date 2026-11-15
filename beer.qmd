@@ -32,6 +32,8 @@ La production mensuelle de bière, exprimée en mégalitres, a été mesurée su
 
 L'analyse est réalisée dans la [SciViews Box `r rmarkdown::metadata$svbox`](https://www.sciviews.org/software/svbox/) dans [Saturn Cloud](https://saturncloud.io) (`r rmarkdown::metadata$vm`) avec le [logiciel R](https://www.r-project.org) (`r R.version.string`). Le package {pastecs} version `r packageVersion("pastecs")` est utilisé pour étudier la série temporelle.
 
+## Déclaration sur l'utilisation de l'IA
+
 <!--% Spécifiez si vous avez employé l'intelligence artificielle dans votre projet. -->
 
 ```{r ai_comment, output='asis'}
@@ -40,7 +42,7 @@ select_answer(r"-{
 [] -   Ce document a été rédigé sans recours à l'Intelligence Artificielle.}-")
 ```
 
-<!--% Précisez ci-dessous l'utilisation que vous avez faite de l'IA. Citez le modèle utilisé. -->
+<!-- Précisez ci-dessous l'utilisation que vous avez faite de l'IA. Citez le modèle utilisé. -->
 
 # Résultats
 
@@ -72,10 +74,10 @@ select_answer(r"-{
 [] -   L'autocorrélation est nulle et indique la similitude importante entre la série initiale et la série décalée.
 [] -   L'autocorrélation est forte et indique la grande différence entre la série initiale et la série décalée.
 
-[] -   Toutes les barres sont comprises à l'intérieur de l'enveloppe de confiance à 5 %.
-[] -   Toutes les barres sont comprises à l'extérieur de l'enveloppe de confiance à 5 %.
-[] -   Toutes les barres sont comprises à l'intérieur de l'enveloppe de confiance à 95 %.
-[] -   Toutes les barres sont comprises à l'extérieur de l'enveloppe de confiance à 95 %.}-")
+[] -   Toutes les barres sont situées à l'intérieur de l'enveloppe de confiance à 5 %.
+[] -   Toutes les barres sont situées à l'extérieur de l'enveloppe de confiance à 5 %.
+[] -   Toutes les barres sont situées à l'intérieur de l'enveloppe de confiance à 95 %.
+[] -   Toutes les barres sont situées à l'extérieur de l'enveloppe de confiance à 95 %.}-")
 ```
 
 ## Statistiques glissantes par 5 ans
@@ -91,9 +93,9 @@ legend(___)
 
 ```{r bsslcomment, output='asis'}
 select_answer(r"-{
-[] -   Trois phases sont observables. Une augmentation de 1956 à 1975 est suivie par une phase stationnaire de 10 ans puis par une diminution légère de la production.
 [] -   Trois phases sont observables. Une augmentation de 1956 à 1975 est suivie par une phase stationnaire de 10 ans puis par une diminution similaire à l'augmentation initiale de la production.
 [] -   Deux phases marquées sont observables. Une augmentation de 1956 à 1980 est suivie par une diminution légère.
+[] -   Trois phases sont observables. Une augmentation de 1956 à 1975 est suivie par une phase stationnaire de 10 ans puis par une diminution légère de la production.
 [] -   Deux phases marquées sont observables. Une augmentation de 1956 à 1980 est suivie par une diminution similaire à l'augmentation de la production.}-")
 ```
 
@@ -111,9 +113,9 @@ ___
 
 ```{r btrendcomment, output='asis'}
 select_answer(r"-{
-[] -   Il y a une tendance générale significative à l'augmentation de la série.
 [] -   Il y a une tendance générale significative à la diminution de la série.
 [] -   Il n'y a pas de tendance générale.
+[] -   Il y a une tendance générale significative à l'augmentation de la série.
 
 [] -   499 tests de corrélation sont réalisés lors de ce test par bootstrap.
 [] -   500 tests de corrélation sont réalisés lors de ce test par bootstrap.
@@ -172,10 +174,10 @@ select_answer(r"-{
 
 ```{r bconclusionscomment, output='asis'}
 select_answer(r"-{
-[] -   La production de bière en Australie augmente jusqu'au milieu des années 1970, puis elle stagne et diminue même légèrement vers la fin.
-[] -   La production de bière en Australie augmente jusqu'au milieu des années 1970, puis elle diminue fortement, de manière symétrique à l'augmentation initiale.
-[] -   La production de bière en Australie augmente de manière continue sur toute la période étudiée.
 [] -   La production de bière en Australie diminue jusqu'au milieu des années 1970, puis elle stagne et augmente même légèrement vers la fin.
+[] -   La production de bière en Australie augmente de manière continue sur toute la période étudiée.
+[] -   La production de bière en Australie augmente jusqu'au milieu des années 1970, puis elle diminue fortement, de manière symétrique à l'augmentation initiale.
+[] -   La production de bière en Australie augmente jusqu'au milieu des années 1970, puis elle stagne et diminue même légèrement vers la fin.
 
 [] -   Globalement, la tendance générale à la diminution est significative.
 [] -   Globalement, il n'y a pas de tendance générale significative.
@@ -184,11 +186,11 @@ select_answer(r"-{
 [] -   La série présente une autocorrélation forte.
 [] -   La série présente une autocorrélation nulle.
 
-[] -   Des cycles mensuel et semestriel sont détectés.
-[] -   Des cycles annuel et de quatre mois sont détectés.
 [] -   Aucun cycle significatif n'est détecté.
+[] -   Des cycles annuel et de quatre mois sont détectés.
+[] -   Des cycles mensuel et semestriel sont détectés.
 
-[] -   Au niveau annuel, la production est maximale en juin et minimale en décembre.
 [] -   Au niveau annuel, la production est maximale en janvier et minimale en juillet.
+[] -   Au niveau annuel, la production est maximale en juin et minimale en décembre.
 [] -   Au niveau annuel, la production est maximale en décembre et minimale en juin.}-")
 ```

@@ -34,6 +34,8 @@ Un individu fait l'objet d'un suivi clinique quotidien en milieu psychiatrique s
 
 L'analyse est réalisée dans la [SciViews Box `r rmarkdown::metadata$svbox`](https://www.sciviews.org/software/svbox/) dans [Saturn Cloud](https://saturncloud.io) (`r rmarkdown::metadata$vm`) avec le [logiciel R](https://www.r-project.org) (`r R.version.string`). Le package {pastecs} version `r packageVersion("pastecs")` est utilisé pour étudier la série temporelle.
 
+## Déclaration sur l'utilisation de l'IA
+
 <!--% Spécifiez si vous avez employé l'intelligence artificielle dans votre projet. -->
 
 ```{r ai_comment, output='asis'}
@@ -42,7 +44,7 @@ select_answer(r"-{
 [] -   Ce document a été rédigé sans recours à l'Intelligence Artificielle.}-")
 ```
 
-<!--% Précisez ci-dessous l'utilisation que vous avez faite de l'IA. Citez le modèle utilisé. -->
+<!-- Précisez ci-dessous l'utilisation que vous avez faite de l'IA. Citez le modèle utilisé. -->
 
 # Résultats
 
@@ -67,7 +69,7 @@ select_answer(r"-{
 [] -   La série comprend 60 observations avec une fréquence de 120.
 
 [] -   La série débute au jour 1 et se termine au jour 120. Les dates exactes ne sont pas utiles pour cette analyse.
-[] -   La série débute le 12 novembre 2008 et se termine le 8 février 2009. Les dates sont cruciales dans cette analyse.}-")
+[] -   La série débute le 12 octobre 2008 et se termine le 8 février 2009. Les dates sont cruciales dans cette analyse.}-")
 ```
 
 ## Identification de tendances locales
@@ -158,8 +160,8 @@ select_answer(r"-{
 [] -   Il n'y a pas d'autocorrélation dans ces séries.
 [] -   Une autocorrélation positive jusqu'à 10 jours environ s'observe tant avant que pendant le traitement.
 [] -   L'autocorrélation est à peu près de même intensité avant et pendant le traitement.
-[] -   L'autocorrélation est plus forte avant que pendant le traitement.
-[] -   L'autocorrélation est plus faible avant que pendant le traitement.}-")
+[] -   L'autocorrélation est nettement plus forte avant que pendant le traitement.
+[] -   L'autocorrélation est nettement plus faible avant que pendant le traitement.}-")
 ```
 
 <!--# À votre avis, pourquoi ne faisons-nous pas d'analyse spectrale sur ces deux sous-séries ? -->
